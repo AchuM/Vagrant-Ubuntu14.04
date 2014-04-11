@@ -1,11 +1,11 @@
 Vagrant-Ubuntu 14.04
 ===================
 
-Vagrant box inside Ubuntu14.04, Nginx,Percona,PHP. Includes both PHP-FPM and HHVM FastCGI.
+Ubuntu14.04 Vagrant box inside Nginx,Percona,PHP. Includes both PHP-FPM and HHVM FastCGI.
 
 
 
-## What's inside
+## What's inside?
 
 * [Ubuntu 14.04](http://releases.ubuntu.com/14.04/)
 * [Nginx](http://nginx.org/)
@@ -18,6 +18,7 @@ Vagrant box inside Ubuntu14.04, Nginx,Percona,PHP. Includes both PHP-FPM and HHV
 ## How to install 
 From the root of the directory of the cloned project, vagrant up:
 ```
+$ git clone https://github.com/AchuM/Vagrant-Ubuntu14.04.git
 $ cd Vagrant-Ubuntu14.04
 $ vagrant up
 ```
@@ -25,3 +26,4 @@ $ vagrant up
 ## Usage
 
 The host IP is 192.168.1.10.
+Phpmyadmin http://192.168.1.10/phpmyadmin
