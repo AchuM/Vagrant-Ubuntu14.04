@@ -13,7 +13,7 @@ Vagrant box inside Ubuntu14.04, Nginx,Percona,PHP. Includes both PHP-FPM and HHV
 * [PHP-FPM](http://php-fpm.org/)
 * [HHVM FastCGI](http://www.hhvm.com/)
 * [phpMyAdmin](http://www.phpmyadmin.net/)
-* PHP Modules(php-apc,php5-gd,php5-curl,php5-memcache,php5-mysql,php5-mcrypt,php5-sqlite,php5-xdebug)
+* PHP Modules (php-apc, php5-gd, php5-curl, php5-memcache,php5-mysql,php5-mcrypt,php5-sqlite,php5-xdebug)
 
 ## How to install 
 From the root of the directory of the cloned project, vagrant up:
