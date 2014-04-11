@@ -26,4 +26,5 @@ $ vagrant up
 ## Usage
 
 The host IP is 192.168.1.10.
-Phpmyadmin http://192.168.1.10/phpmyadmin
+
+phpmyadmin ```/phpmyadmin```
