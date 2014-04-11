@@ -1,4 +1,6 @@
 #!/bin/bash
+# Author Achu Abebe
+# Author Emial: AchuSime@gmail.com
 
 apt-get install --yes lsb-release
 DISTRIB_CODENAME=$(lsb_release --codename --short)
