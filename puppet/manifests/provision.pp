@@ -7,6 +7,10 @@ import "./core/*", "./provision/**/*"
 #
 class provision
 {
+Exec {
+    path        => "/bin/:/sbin/:/usr/bin/:/usr/sbin/:/usr/local/bin:/opt/vagrant_ruby/bin/",
+    environment => "HOME=/home/vagrant"
+  }
   include core::params
 
   include apt
