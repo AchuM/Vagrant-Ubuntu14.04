@@ -3,77 +3,33 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
- # Every Vagrant virtual environment requires a box to build off of.
+# Every Vagrant virtual environment requires a box to build off of.
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.hostname = "vagrant-Ubuntu18.04"
 
 end
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network :forwarded_port, guest: 80, host: 8080
-
-  # Create a private network, which allows host-only access to the machine
+#config.ssh.private_key_path="~/.ssh/id_rsa"
+  config.ssh.username = 'vagrant'
+  config.ssh.password = 'vagrant'
+  config.ssh.forward_agent = true
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.1.10"
+  config.vm.network "private_network", ip: "192.168.10.10"
 
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network :public_network
-
+#config.vm.synced_folder ".", "/vagrant", type: "nfs" 
+config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+config.vm.provider "virtualbox" do |vb|
+  #   # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+    vb.name = "vagrant_anisible"
+  end
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "public", "/var/www/", nfs: true
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
-
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.customize ["modifyvm", :id, "--cpus", "4"]
-    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-    vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
-    vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-  end
-
   config.vm.provision :shell, :path => "bootstrap.sh"
 
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file base.pp in the manifests_path directory.
-  #
-  # An example Puppet manifest to provision the message of the day:
-  #
-  # # group { "puppet":
-  # #   ensure => "present",
-  # # }
-  # #
-  # # File { owner => 0, group => 0, mode => 0644 }
-  # #
-  # # file { '/etc/motd':
-  # #   content => "Welcome to your Vagrant-built virtual machine!
-  # #               Managed by Puppet.\n"
-  # # }
-  #
 
   # Bootstrap Puppet by updating guest packages and installing the required
   # Puppet modules using libraian-puppet
